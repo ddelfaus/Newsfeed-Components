@@ -85,6 +85,33 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Random Article about nothing',
+    date: 'Jan 30, 2019',
+    firstParagraph: `Exasperer fillettes tu cuirasses un battirent oh citadelle cependant. Etendards du on gachettes superieur eperonnes. Abondance cauchemar superieur firmament boulevard eu la te soufflent. Jet vieil adore babil geste son moi. Charger il longues ah la mauvais en. Boue sort suis le mats vaut ah ca vous. Bourreaux sacrifice peu mystiques corbeille aux camarades indicible sur net. Ce agacent va brulees meriter en.`,
+
+    secondParagraph: `Piquette laissons comptent la societes en couverts. Agir nous venu en hors arcs joie on. Comme que ton sur chose coeur. Ici comprenez jugements mur ton pic cauchemar printemps sentiment. Crurent fatigue ca pu sa carreau. Nos attique volonte des humains. Inassouvi des neanmoins ils dut poussiere.`,
+
+    thirdParagraph: `Vie passe leurs aux jeune idees rendu hisse oui. Car contes but nouent blancs les derobe wagons ras durant. Electrique ces arriverent nos renferment decharnees. Jeu appela car depart esprit qui acheve patrie crises peu. Cime en rage le pois. Suis elle pu hate en vers te. Abattit non car coupait recrues affirma but. Pressaient les ses instrument bon des avancaient tristement. Ai susciter paraitre ni premiers meilleur la et cherirai.`
+  },
+  {
+    title: 'Random Article Fake News',
+    date: 'Jan 30, 2019',
+    firstParagraph: `Exasperer fillettes tu cuirasses un battirent oh citadelle cependant. Etendards du on gachettes superieur eperonnes. Abondance cauchemar superieur firmament boulevard eu la te soufflent. Jet vieil adore babil geste son moi. Charger il longues ah la mauvais en. Boue sort suis le mats vaut ah ca vous. Bourreaux sacrifice peu mystiques corbeille aux camarades indicible sur net. Ce agacent va brulees meriter en.`,
+
+    secondParagraph: `Piquette laissons comptent la societes en couverts. Agir nous venu en hors arcs joie on. Comme que ton sur chose coeur. Ici comprenez jugements mur ton pic cauchemar printemps sentiment. Crurent fatigue ca pu sa carreau. Nos attique volonte des humains. Inassouvi des neanmoins ils dut poussiere.`,
+
+    thirdParagraph: `Vie passe leurs aux jeune idees rendu hisse oui. Car contes but nouent blancs les derobe wagons ras durant. Electrique ces arriverent nos renferment decharnees. Jeu appela car depart esprit qui acheve patrie crises peu. Cime en rage le pois. Suis elle pu hate en vers te. Abattit non car coupait recrues affirma but. Pressaient les ses instrument bon des avancaient tristement. Ai susciter paraitre ni premiers meilleur la et cherirai.`
+  },
+  {
+    title: 'Random Article Fake things',
+    date: 'Jun 30, 2019',
+    firstParagraph: `Exasperer fillettes tu cuirasses un battirent oh citadelle cependant. Etendards du on gachettes superieur eperonnes. Abondance cauchemar superieur firmament boulevard eu la te soufflent. Jet vieil adore babil geste son moi. Charger il longues ah la mauvais en. Boue sort suis le mats vaut ah ca vous. Bourreaux sacrifice peu mystiques corbeille aux camarades indicible sur net. Ce agacent va brulees meriter en.`,
+
+    secondParagraph: `Piquette laissons comptent la societes en couverts. Agir nous venu en hors arcs joie on. Comme que ton sur chose coeur. Ici comprenez jugements mur ton pic cauchemar printemps sentiment. Crurent fatigue ca pu sa carreau. Nos attique volonte des humains. Inassouvi des neanmoins ils dut poussiere.`,
+
+    thirdParagraph: `Vie passe leurs aux jeune idees rendu hisse oui. Car contes but nouent blancs les derobe wagons ras durant. Electrique ces arriverent nos renferment decharnees. Jeu appela car depart esprit qui acheve patrie crises peu. Cime en rage le pois. Suis elle pu hate en vers te. Abattit non car coupait recrues affirma but. Pressaient les ses instrument bon des avancaient tristement. Ai susciter paraitre ni premiers meilleur la et cherirai.`
   }
 ];
 
@@ -112,3 +139,75 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+// component function
+
+const articleContainer = document.querySelector('.articles');
+
+
+function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph){
+//creating elements
+
+const articleSection = document.createElement('div');
+const articleTitle = document.createElement('h2');
+const articleDate = document.createElement('p');
+const articlePara1 = document.createElement('p');
+const articlePara2 = document.createElement('p');
+const articlePara3 = document.createElement('p');
+const articleButton = document.createElement('span');
+
+// creating classes
+
+articleSection.classList.add('article');
+articleDate.classList.add('date');
+articleButton.classList.add('expandButton');
+
+
+
+
+// adding content
+articleTitle.textContent = title;
+articleDate.textContent = date;
+articlePara1.textContent = firstParagraph;
+articlePara2.textContent = secondParagraph;
+articlePara3.textContent = thirdParagraph;
+
+articleButton.textContent = '\u25bc';
+
+
+
+
+
+// adding items
+
+articleSection.appendChild(articleTitle);
+articleSection.appendChild(articleDate);
+articleSection.appendChild(articlePara1);
+articleSection.appendChild(articlePara2);
+articleSection.appendChild(articlePara3);
+articleSection.appendChild(articleButton);
+
+
+//event button
+articleButton.addEventListener('click', (e) => {
+  console.log('button pressed');
+  articleSection.classList.toggle('article-open');
+
+})
+
+return articleSection
+}
+
+
+
+
+
+
+
+let articleArray = data.map((item) => {
+
+  let newArticle = createArticle(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph);
+  articleContainer.appendChild(newArticle);
+  return newArticle;
+})
+
